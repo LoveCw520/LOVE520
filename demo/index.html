@@ -1,0 +1,210 @@
+﻿<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>码瑙 - AI 云端代码开发实验室</title><style>
+*{margin:0;padding:0;box-sizing:border-box}:root{--bg1:#1e1e2e;--bg2:#181825;--bg3:#11111b;--bg4:#252540;--bg5:#313244;--bd:#333355;--t1:#cdd6f4;--t2:#a6adc8;--t3:#6c7086;--b1:#89b4fa;--b3:#f38ba8;--b5:#cba6f7}
+body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg1);color:var(--t1);overflow:hidden;height:100vh;font-size:13px}
+.topbar{height:44px;background:var(--bg2);border-bottom:1px solid var(--bd);display:flex;align-items:center;padding:0 12px;justify-content:space-between}
+.topbar-l{display:flex;align-items:center;gap:12px}.topbar-logo{width:24px;height:24px;background:linear-gradient(135deg,var(--b1),var(--b5));border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff}
+.topbar-title{font-size:13px;font-weight:600}.topbar-proj{font-size:12px;color:var(--t2);padding:3px 8px;background:var(--bg4);border-radius:4px;cursor:pointer}
+.topbar-r{display:flex;align-items:center;gap:4px}
+.btn{padding:5px 12px;border-radius:4px;border:none;cursor:pointer;font-size:12px;display:inline-flex;align-items:center;gap:4px;transition:all .15s}
+.btn-pri{background:var(--b1);color:var(--bg1)}.btn-pri:hover{filter:brightness(1.15)}
+.btn-gh{background:transparent;color:var(--t2);border:1px solid transparent}.btn-gh:hover{background:var(--bg5)}
+.ibtn{width:30px;height:30px;border-radius:6px;border:none;background:transparent;color:var(--t2);font-size:16px;cursor:pointer;position:relative}.ibtn:hover{background:var(--bg5)}
+.bdg{position:absolute;top:2px;right:2px;width:16px;height:16px;background:var(--b3);border-radius:50%;font-size:9px;color:#fff;display:flex;align-items:center;justify-content:center}
+.av{border-radius:50%;width:28px;height:28px;background:linear-gradient(135deg,var(--b1),var(--b5));font-size:12px;color:#fff;font-weight:600;border:none;cursor:pointer}
+.marea{display:flex;height:calc(100vh - 44px)}
+.lsb{width:240px;background:var(--bg2);border-right:1px solid var(--bd);display:flex;flex-direction:column;flex-shrink:0}
+.sh{padding:8px 12px;font-size:11px;font-weight:600;color:var(--t3);border-bottom:1px solid var(--bd);display:flex;justify-content:space-between}
+.ft{padding:4px 0;flex:1;overflow-y:auto}
+.ti{padding:3px 12px;font-size:12px;color:var(--t2);cursor:pointer;display:flex;align-items:center;gap:5px}
+.ti:hover{background:var(--bg5)}.ti.a{background:var(--bg4);color:var(--b1)}
+.eda{flex:1;display:flex;flex-direction:column;min-width:0}
+.et{height:35px;background:var(--bg2);border-bottom:1px solid var(--bd);display:flex}
+.et>.tb{padding:6px 12px;font-size:12px;color:var(--t3);cursor:pointer;border-right:1px solid var(--bd)}
+.et>.tb.a{color:var(--t1);background:var(--bg1);border-bottom:2px solid var(--b1)}
+.eb{flex:1;background:var(--bg1);position:relative;overflow:hidden}
+.cw{display:flex;height:100%}
+.ln{width:48px;background:var(--bg1);color:var(--t3);text-align:right;padding:12px 8px 0 0;font-family:Consolas,monospace;font-size:13px;line-height:1.6;overflow:hidden;border-right:1px solid var(--bd);user-select:none}
+.ce{flex:1;background:var(--bg1);color:var(--t1);border:none;outline:none;resize:none;padding:12px 16px;font-family:Consolas,monospace;font-size:13px;line-height:1.6;tab-size:4;white-space:pre;overflow:auto}
+.eempty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--t3);gap:12px}
+.aip{width:320px;background:var(--bg2);border-left:1px solid var(--bd);display:flex;flex-direction:column;flex-shrink:0}
+.aih{padding:8px 12px;font-size:12px;font-weight:600;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:6px}
+.aim{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:10px}
+.msg{padding:8px 10px;border-radius:8px;font-size:12px;line-height:1.5;max-width:90%}
+.msg.a{background:var(--bg4);align-self:flex-start}.msg.u{background:var(--b1);color:var(--bg1);align-self:flex-end}
+.aiemp{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;gap:12px;text-align:center;color:var(--t3)}
+.ais{display:flex;flex-direction:column;gap:6px;padding:0 12px}
+.ais .sb{padding:8px 10px;border-radius:6px;border:1px solid var(--bd);background:var(--bg4);color:var(--t2);cursor:pointer;font-size:11px;text-align:left}
+.ais .sb:hover{border-color:var(--b5);color:var(--b5)}
+.aiib{padding:8px;border-top:1px solid var(--bd);display:flex;gap:6px}
+.aiib input{flex:1;padding:6px 10px;border-radius:6px;border:1px solid var(--bd);background:var(--bg4);color:var(--t1);font-size:12px;outline:none}
+.aiib .sndb{width:30px;height:30px;border-radius:6px;border:none;cursor:pointer;background:var(--b5);color:#fff;font-size:16px}
+.lp{height:200px;background:var(--bg3);border-top:1px solid var(--bd);display:flex;flex-direction:column;flex-shrink:0}
+.lh{padding:4px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--bd)}
+.ls{font-size:10px;padding:1px 6px;border-radius:4px;background:var(--bg4);color:var(--t3)}
+.lc{flex:1;overflow-y:auto;padding:8px 12px;font-family:Consolas,monospace;font-size:12px;line-height:1.5}
+.lemp{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--t3);gap:6px;font-size:12px}
+.dw{position:relative}
+.dm{position:absolute;top:100%;right:0;min-width:240px;background:var(--bg4);border:1px solid var(--bd);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.4);z-index:1000;display:none;overflow:hidden}
+.dm.o{display:block}.di{padding:8px 12px;font-size:12px;color:var(--t2);cursor:pointer;display:flex;align-items:center;gap:8px}.di:hover{background:var(--bg5)}.dv{height:1px;background:var(--bd);margin:4px 0}
+.nh{padding:10px 12px;font-size:12px;font-weight:600;border-bottom:1px solid var(--bd);display:flex;justify-content:space-between}
+.nh .mr{font-size:11px;color:var(--b1);cursor:pointer}
+.ni{padding:8px 12px;font-size:11px;color:var(--t2);cursor:pointer;display:flex;gap:8px}.ni:hover{background:var(--bg5)}
+.ni .nd{width:6px;height:6px;border-radius:50%;background:var(--b1);flex-shrink:0;margin-top:3px}
+.ni .nd.rd{background:transparent}.ni .nt{color:var(--t1);font-weight:500}.ni .ntm{font-size:10px;color:var(--t3);margin-top:2px}
+.mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:2000;align-items:center;justify-content:center}
+.mo.o{display:flex}.mod{background:var(--bg2);border-radius:12px;border:1px solid var(--bd);width:520px;max-height:80vh;overflow:hidden}
+.mh{padding:14px 16px;font-size:14px;font-weight:600;border-bottom:1px solid var(--bd);display:flex;justify-content:space-between}
+.mb{padding:16px;overflow-y:auto;max-height:calc(80vh - 56px)}
+.ss{margin-bottom:20px}.ss h3{font-size:12px;font-weight:600;margin-bottom:10px}
+.sr{display:flex;align-items:center;justify-content:space-between;padding:6px 0;font-size:12px;color:var(--t2)}
+.sr select{padding:4px 8px;border-radius:4px;border:1px solid var(--bd);background:var(--bg4);color:var(--t1)}
+.fpc{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:3000;align-items:center;justify-content:center}
+.fpc.o{display:flex}.fpb{background:var(--bg2);border-radius:12px;border:1px solid var(--bd);width:400px;padding:24px}
+.fpb h2{font-size:16px;margin-bottom:20px}
+.fg{margin-bottom:14px}.fg label{display:block;font-size:12px;color:var(--t2);margin-bottom:4px}
+.fg input{width:100%;padding:8px 10px;border-radius:6px;border:1px solid var(--bd);background:var(--bg4);color:var(--t1);font-size:13px;outline:none}
+.fg .iwb{display:flex;gap:6px}.fg .iwb input{flex:1}.fa{display:flex;gap:8px;justify-content:flex-end;margin-top:20px}
+.fa .bs{padding:8px 16px;border-radius:6px;border:none;cursor:pointer;background:var(--b1);color:var(--bg1);font-size:12px}
+.fa .bc{padding:8px 16px;border-radius:6px;border:none;cursor:pointer;background:var(--bg4);color:var(--t2);font-size:12px}
+@media(max-width:900px){.aip{display:none}}
+.cb{display:inline-flex;width:14px;height:14px;align-items:center;justify-content:center;border-radius:3px;cursor:pointer;font-size:9px}.cb:hover{background:var(--bg5)}
+@keyframes sp{to{transform:rotate(360deg)}}
+.sp{display:inline-block;width:12px;height:12px;border:2px solid transparent;border-top-color:currentColor;border-radius:50%;animation:sp .6s linear infinite}
+</style></head><body>
+<div class="topbar">
+  <div class="topbar-l">
+    <div class="topbar-logo">M</div>
+    <span class="topbar-title">码瑙</span>
+    <div class="topbar-proj" onclick="td('pd')">📁 demo-project ▼</div>
+  </div>
+  <div class="topbar-r">
+    <button class="btn btn-pri" id="rb" onclick="rn()"><span>▶</span> 运行</button>
+    <div class="dw">
+      <button class="btn btn-gh" onclick="td('ed')">Java 21 ▼</button>
+      <div class="dm" id="ed">
+        <div class="di" onclick="se(this)">☕ Java 21</div>
+        <div class="di" onclick="se(this)">🐍 Python 3.12</div>
+        <div class="di" onclick="se(this)">🟢 Node.js 20</div>
+        <div class="di" onclick="se(this)">🔷 Go 1.22</div>
+        <div class="di" onclick="se(this)">🦀 Rust 1.78</div>
+      </div>
+    </div>
+    <div class="dw">
+      <button class="ibtn" onclick="td('nd')">🔔<span class="bdg" id="nb">3</span></button>
+      <div class="dm" id="nd" style="min-width:300px">
+        <div class="nh"><span>通知</span><span class="mr" onclick="mar()">全部标记已读</span></div>
+        <div class="ni" onclick="no(this)"><span class="nd"></span><div><div class="nt">✅ 任务运行完成</div><div style="font-size:11px;color:var(--t2)">Main.java 执行成功</div><div class="ntm">2 分钟前</div></div></div>
+        <div class="ni" onclick="no(this)"><span class="nd"></span><div><div class="nt">🔍 AI 分析完成</div><div style="font-size:11px;color:var(--t2)">报错分析已就绪</div><div class="ntm">5 分钟前</div></div></div>
+        <div class="ni" onclick="no(this)"><span class="nd"></span><div><div class="nt">⏰ 容器即将过期</div><div style="font-size:11px;color:var(--t2)">将在 5 分钟后回收</div><div class="ntm">10 分钟前</div></div></div>
+      </div>
+    </div>
+    <div class="dw">
+      <button class="av" onclick="td('ud')">Y</button>
+      <div class="dm" id="ud" style="min-width:180px">
+        <div class="di"><span>👤</span> 个人资料</div>
+        <div class="di" onclick="os()"><span>⚙️</span> 设置</div>
+        <div class="dv"></div>
+        <div class="di"><span>📋</span> 我的项目</div>
+        <div class="di"><span>📊</span> 使用统计</div>
+        <div class="dv"></div>
+        <div class="di"><span>🚪</span> 退出登录</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="marea">
+<div class="lsb">
+  <div class="sh"><span>📂 文件</span><button class="ibtn" style="width:20px;height:20px;font-size:14px;padding:0" onclick="nf()">+</button></div>
+  <div class="ft" id="ft"></div>
+</div>
+<div class="eda">
+  <div class="et" id="et">
+    <div class="tb a">📄 Main.java <span class="cb" onclick="event.stopPropagation();ct(0)">x</span></div>
+  </div>
+  <div class="eb">
+    <div class="cw">
+      <div class="ln" id="ln">1</div>
+      <textarea class="ce" id="ce" spellcheck="false" oninput="sl()" onscroll="ss()"></textarea>
+    </div>
+    <div class="eempty" id="eempty" style="display:none">
+      <div style="font-size:48px;opacity:.3">📝</div>
+      <div style="font-size:13px">选择或创建一个文件开始编辑</div>
+    </div>
+  </div>
+  <div class="lp">
+    <div class="lh">
+      <div><span style="font-size:11px;font-weight:600;color:var(--t1)">📋 日志</span><span class="ls" id="ls">就绪</span></div>
+      <div style="display:flex;gap:12px;font-size:11px;color:var(--t3)"><span>⏱ <span id="rt">—</span></span><span>🖥 <span id="cu">—</span></span><span>💾 <span id="mu">—</span></span></div>
+    </div>
+    <div class="lc">
+      <div class="lemp" id="le"><span style="font-size:20px;opacity:.4">📄</span><span>还没有运行记录 — 点击「运行」按钮执行你的代码</span></div>
+      <div id="lls" style="display:none"></div>
+    </div>
+  </div>
+</div>
+<div class="aip">
+  <div class="aih"><span>🤖</span> AI 助手</div>
+  <div class="aim" id="aim">
+    <div class="aiemp" id="aie">
+      <div style="font-size:36px;opacity:.3">💡</div>
+      <p>你可以问我这些问题——</p>
+      <div class="ais">
+        <div class="sb" onclick="aq('解释这段代码')">📖 解释这段代码</div>
+        <div class="sb" onclick="aq('帮我优化性能')">⚡ 帮我优化性能</div>
+        <div class="sb" onclick="aq('分析报错原因')">🔍 分析报错原因</div>
+      </div>
+    </div>
+  </div>
+  <div class="aiib"><input type="text" id="aii" placeholder="输入问题..." onkeydown="if(event.key==='Enter')sa()"><button class="sndb" onclick="sa()">➤</button></div>
+</div>
+</div>
+<div class="mo" id="sm">
+  <div class="mod">
+    <div class="mh"><span>⚙️ 设置</span><button onclick="cs()" style="background:transparent;border:none;color:var(--t3);font-size:16px;cursor:pointer">x</button></div>
+    <div class="mb">
+      <div class="ss"><h3>个人资料</h3><div class="sr"><span>昵称</span><input type="text" value="Yun" style="width:180px;padding:4px 8px;border-radius:4px;border:1px solid var(--bd);background:var(--bg4);color:var(--t1);font-size:12px;outline:none"></div><div class="sr"><span>头像</span><div style="display:flex;gap:6px"><div class="av" style="width:36px;height:36px;font-size:14px">Y</div><button class="btn btn-gh" style="font-size:11px">更换</button></div></div></div>
+      <div class="ss"><h3>安全</h3><div class="sr"><span>密码</span><button class="btn btn-gh" style="font-size:11px;border:1px solid var(--bd)" onclick="alert('修改密码功能演示')">修改密码</button></div></div>
+      <div class="ss"><h3>编辑器偏好</h3><div class="sr"><span>字号</span><select><option>12px</option><option selected>14px</option><option>16px</option><option>18px</option></select></div><div class="sr"><span>主题</span><select><option selected>深色</option><option>浅色</option></select></div><div class="sr"><span>缩进</span><select><option>2</option><option selected>4</option></select></div></div>
+      <div class="ss"><h3>通知偏好</h3><div class="sr"><span>任务完成</span><input type="checkbox" checked></div><div class="sr"><span>容器过期</span><input type="checkbox" checked></div><div class="sr"><span>AI 分析</span><input type="checkbox" checked></div></div>
+    </div>
+  </div>
+</div>
+<div class="fpc" id="fm">
+  <div class="fpb">
+    <h2>🔑 忘记密码</h2>
+    <div class="fg"><label>注册邮箱</label><input type="email" placeholder="输入你的邮箱地址"></div>
+    <div class="fg"><label>验证码</label><div class="iwb"><input type="text" placeholder="输入验证码"><button style="padding:8px 12px;border-radius:6px;border:none;cursor:pointer;font-size:12px;background:var(--bg4);color:var(--t2)" onclick="alert('验证码已发送')">发送验证码</button></div></div>
+    <div class="fg"><label>新密码</label><input type="password" placeholder="至少 8 位，含字母和数字"></div>
+    <div class="fg"><label>确认密码</label><input type="password" placeholder="再次输入新密码"></div>
+    <div class="fa"><button class="bc" onclick="cf()">取消</button><button class="bs" onclick="alert('密码重置成功！请重新登录（演示）');cf()">重置密码</button></div>
+  </div>
+</div>
+<script>
+var af='',ir=false,fs=[{n:'Main.java'}],SC={};
+SC['Main.java']='public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello, 码瑙!");\n        int n = 10;\n        for (int i = 1; i <= n; i++) {\n            System.out.print(fib(i) + " ");\n        }\n        System.out.println();\n    }\n    public static int fib(int n) {\n        if (n <= 1) return n;\n        return fib(n - 1) + fib(n - 2);\n    }\n}';
+SC['utils.py']='def greet(name):\n    return f"你好, {name}!"\ndef fib(n):\n    if n <= 1: return n\n    return fib(n-1)+fib(n-2)';
+SC['README.md']='# demo-project\n欢迎使用码瑙！';
+function rt(){var t=document.getElementById('ft');t.innerHTML='';fs.forEach(function(f){var d=document.createElement('div');d.className='ti'+(af==f.n?' a':'');d.innerHTML='<span>\uD83D\uDCC4</span> '+f.n;d.onclick=function(){of(f.n)};t.appendChild(d)})}
+function of(n){af=n;document.getElementById('ce').value=SC[n]||'// 新文件';sl();document.getElementById('eempty').style.display='none';rt();var et=document.getElementById('et');et.innerHTML='';var tb=document.createElement('div');tb.className='tb a';tb.innerHTML='\uD83D\uDCC4 '+n+' <span class="cb" onclick="ct(0)">x</span>';tb.onclick=function(){of(n)};et.appendChild(tb)}
+function nf(){var n=prompt('文件名：');if(n){SC[n]='';of(n)}}
+function ct(){var et=document.getElementById('et');if(et.children.length<=1){document.getElementById('cw').style.display='none';document.getElementById('eempty').style.display='flex';return}var nx=et.children[1]||et.children[0];et.children[0].remove();if(nx)nx.click()}
+function sl(){var e=document.getElementById('ce'),l=e.value.split('\n').length;document.getElementById('ln').textContent='';for(var i=1;i<=l;i++){document.getElementById('ln').textContent+=i+'\n'}}
+function ss(){document.getElementById('ln').scrollTop=document.getElementById('ce').scrollTop}
+function rn(){if(ir)return;ir=true;var b=document.getElementById('rb'),s=document.getElementById('ls'),l=document.getElementById('lls'),le=document.getElementById('le');b.innerHTML='<span class="sp"></span> 运行中';b.disabled=true;s.textContent='运行中...';le.style.display='none';l.style.display='block';l.innerHTML='';var st=Date.now(),logs=['[14:56:01] > 正在提交代码...','[14:56:01] > 环境: Java 21','[14:56:01] > Job 已创建','[14:56:01] > Pod 运行中...','Hello, 码瑙!','1 1 2 3 5 8 13 21 34 55','[14:56:02] > Process exited with code 0'];var idx=0;var iv=setInterval(function(){if(idx>=logs.length){clearInterval(iv);var el=((Date.now()-st)/1000).toFixed(2);ir=false;b.innerHTML='<span>▶</span> 运行';b.disabled=false;s.textContent='已完成 ('+el+'s)';document.getElementById('rt').textContent=el+'s';document.getElementById('cu').textContent='12%';document.getElementById('mu').textContent='128MB';setTimeout(function(){am('a','✅ 执行成功！耗时 '+el+'s。建议将递归改为迭代优化性能。')},500);return}var d=document.createElement('div');d.textContent=logs[idx];l.appendChild(d);idx++},400)}
+function sa(){var i=document.getElementById('aii'),m=i.value.trim();if(!m)return;i.value='';am('u',m);var aie=document.getElementById('aie');if(aie)aie.style.display='none';setTimeout(function(){var r;if(m.includes('解释'))r='这段 Java 代码递归计算斐波那契数列。fib(n) 返回第 n 项，main 循环打印前 10 项。时间复杂度 O(2^n)。';else if(m.includes('优化'))r='改用迭代：初始化 a=0,b=1，循环累加，返回 b。时间复杂度 O(n)，空间 O(1)。';else if(m.includes('报错'))r='当前代码运行正常，没有报错。';else r='你好！我是码瑙 AI 助手，可以帮你解释代码、优化性能或分析报错。';am('a',r)},800)}
+function aq(q){document.getElementById('aii').value=q;sa()}
+function am(r,t){var c=document.getElementById('aim'),d=document.createElement('div');d.className='msg '+(r=='a'?'a':'u');d.textContent=t;c.appendChild(d);c.scrollTop=c.scrollHeight}
+function td(id){var m=document.getElementById(id);if(!m)return;var o=m.classList.contains('o');document.querySelectorAll('.dm').forEach(function(e){e.classList.remove('o')});if(!o)m.classList.add('o')}
+document.addEventListener('click',function(e){if(!e.target.closest('.dw'))document.querySelectorAll('.dm').forEach(function(m){m.classList.remove('o')})});
+function se(el){var btn=el.closest('.dw').querySelector('.btn-gh');btn.innerHTML=el.textContent+' ▼';document.querySelectorAll('.dm').forEach(function(m){m.classList.remove('o')})}
+function no(el){var d=el.querySelector('.nd');if(d)d.classList.add('rd');var u=document.querySelectorAll('.nd:not(.rd)').length;var b=document.getElementById('nb');if(b){b.textContent=u;if(u===0)b.style.display='none'}}
+function mar(){document.querySelectorAll('.nd').forEach(function(d){d.classList.add('rd')});var b=document.getElementById('nb');if(b)b.style.display='none'}
+function os(){document.getElementById('sm').classList.add('o');document.querySelectorAll('.dm').forEach(function(m){m.classList.remove('o')})}
+function cs(){document.getElementById('sm').classList.remove('o')}
+function cf(){document.getElementById('fm').classList.remove('o')}
+document.getElementById('sm').addEventListener('click',function(e){if(e.target===this)cs()});
+document.getElementById('fm').addEventListener('click',function(e){if(e.target===this)cf()});
+sln=sl;rt();of('Main.java');
+</script>
+</body>
+</html>
