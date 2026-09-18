@@ -1,0 +1,45 @@
+HELP.md
+.worktree/
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+#/.claude
+#/.codex
+#/.firecrawl
+/demo-test
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+*.log
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+/full_backup.sql
+/.codex/mcp/mysql-toolbox.env
+/.codex/skills
+/.firecrawl/
+/.npm-cache-tmp/
+.agent-teams
+.playwright-mcp/
